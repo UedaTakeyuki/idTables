@@ -1,4 +1,7 @@
-# file without extension should be ignore
+# target binary should be ignored
+idTables
+
+# file without extension should be ignored
 *
 !*/
 !*.*
