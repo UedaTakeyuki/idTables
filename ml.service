@@ -1,0 +1,14 @@
+[Unit]
+Description=magic lavel server
+After=rc-local.service
+[Service]
+WorkingDirectory=/home/ueda/ml
+ExecStart=/usr/local/go/bin/go run *.go
+Restart=always
+Type=simple
+PIDFile=/var/run/idToken2uid.pid
+StandardOutput=/var/log/ml/ml.log
+StandardError=/var/log/ml/ml.error.log
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,7 @@
+# file without extension should be ignore
+*
+!*/
+!*.*
+
+# data created by system
+*.csv
