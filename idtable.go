@@ -40,10 +40,10 @@ func NewIDTable(path string) (p *IDTable, err error) {
 }
 
 func (t *IDTable) Update(internalID string, externalID string) (err error) {
-	fmt.Println("bf update", t.table)
+	//	fmt.Println("bf update", t.table)
 	(t.table)[externalID] = internalID
 	(t.invtable)[internalID] = externalID
-	fmt.Println("af update", t.table)
+	//	fmt.Println("af update", t.table)
 	//	t.count.Inc()
 	go addStringDataMapCSV(t.path+".csv", externalID, internalID)     // add to CSV file
 	go addStringDataMapCSV(t.path+"_inv.csv", internalID, externalID) // add to CSV file
@@ -53,11 +53,11 @@ func (t *IDTable) Update(internalID string, externalID string) (err error) {
 func (t *IDTable) DeleteDeleteByExternalID(externalID string) (internalID string, err error) {
 	//	externalID := c.Param("id")
 	fmt.Println(t)
-	fmt.Println("bf delete", t.table)
+	//	fmt.Println("bf delete", t.table)
 	internalID = (t.table)[externalID]
 	delete(t.table, externalID)
 	delete(t.invtable, internalID)
-	fmt.Println("af delete", t.table)
+	//	fmt.Println("af delete", t.table)
 	overwriteStringDataMapCSV(t.path+".csv", &(t.table))        // save to CSV file
 	overwriteStringDataMapCSV(t.path+"_inv.csv", &(t.invtable)) // save to CSV file
 	//	faunaDelete(externalID)

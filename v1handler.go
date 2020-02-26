@@ -33,6 +33,7 @@ func pong(c *gin.Context) {
 func v1AddHandler(c *gin.Context) {
 	// parse Form
 	c.Request.ParseForm()
+	fmt.Println(c.Request.Form)
 	idTableName := c.Request.Form["idTableName"][0]
 	internalID := c.Request.Form["internalID"][0]
 	externalID := c.Request.Form["externalID"][0]
@@ -72,9 +73,7 @@ func v1DeleteByExternalIDHandler(c *gin.Context) {
 	idTableName := c.Request.Form["idTableName"][0]
 	//	internalID  = c.Request.Form["internalID"]
 	externalID := c.Request.Form["externalID"][0]
-	fmt.Println(idTableName)
 	//	fmt.Println(c.Request.Form["internalID"])
-	fmt.Println(externalID)
 
 	idTable, err := getIdTable(idTableName)
 	if err != nil {
